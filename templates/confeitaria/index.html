@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+    <title>Confeitaria</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="cabecalho__titulo">Confeitaria</h1>
+    </header>
+    <main class="container">
+        <section class="doces">
+            <h2 class="doces__titulo">Doces em destaque</h2>
+            <ul class="doces__lista">
+                {% if doces %}
+                    {% for doce in doces %}
+                        <div class="card-doce">
+                            <h3 class="card-doce__nome">{{doce.nome}}</h3>
+                            <h4 class="card-doce__categoria">{{doce.categoria}}</h4>
+                            <p class="card-doce__descricao">{{doce.descricao}}</p>
+                            <h4 class="card-doce__preco">R${{doce.preco}}</h4>
+                            <img src="{{doce.foto.url}}" class="card-doce__imagem" aria-hidden="true">
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;
+}
+
+.cabecalho__titulo {
+    text-align: left;
+    font-size: 3.25rem;
+    font-weight: 700;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 3rem;
+    row-gap: 2rem;
+}
+
+.doces__lista {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.doces__titulo {
+    font-size: 2.75rem;
+    font-weight: 700;
+}
+
+.card-doce {
+    max-width: 400px;
+    height: 300px;
+    background-color: lightpink;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: grid;
+    row-gap: .5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr;
+    grid-template-areas: "doce-nome doce-nome"
+        "doce-categoria doce-preco"
+        "doce-descricao doce-descricao"
+        "doce-imagem doce-imagem"
+    ;
+}
+
+.card-doce__nome {
+    font-size: 2rem;
+    font-weight: 500;
+    grid-area: doce-nome;
+}
+
+.card-doce__categoria {
+    font-size: 1rem;
+    font-weight: 700;
+    grid-area: doce-categoria;
+    text-transform: capitalize;
+}
+
+.card-doce__descricao {
+    font-size: 1.25rem;
+    font-weight: 300;
+    grid-area: doce-descricao;
+}
+
+.card-doce__preco {
+    font-weight: 700;
+    font-size: 1.25rem;
+    grid-area: doce-preco;
+}
+
+.card-doce__imagem {
+    border-radius: .5rem;
+    grid-area: doce-imagem;
+    justify-self: center;
+    overflow: hidden;
+}
