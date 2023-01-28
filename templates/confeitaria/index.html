@@ -15,17 +15,25 @@
     <main class="container">
         <section class="doces">
             <h2 class="doces__titulo">Doces em destaque</h2>
+            <div class="doces__categorias">
+                {% for categoria in categorias %}
+                    <a href="?categoria={{categoria}}" class="doces__categoria">{{categoria}}</a>
+                {% endfor %}
+            </div>
             <ul class="doces__lista">
                 {% if doces %}
                     {% for doce in doces %}
-                        <div class="card-doce">
+                        <li class="card-doce">
                             <h3 class="card-doce__nome">{{doce.nome}}</h3>
                             <h4 class="card-doce__categoria">{{doce.categoria}}</h4>
                             <p class="card-doce__descricao">{{doce.descricao}}</p>
                             <h4 class="card-doce__preco">R${{doce.preco}}</h4>
                             <img src="{{doce.foto.url}}" class="card-doce__imagem" aria-hidden="true">
-                        </div>
+                        </li>
                     {% endfor %}
+                
+                {% else %}
+                    <li class="card-doce--erro">Nenhum doce encontrado =(</li>
                 {% endif %}
             </ul>
         </section>

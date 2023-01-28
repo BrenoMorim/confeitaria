@@ -25,6 +25,33 @@
     row-gap: 1rem;
 }
 
+.doces__categorias {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.doces__categoria {
+    cursor: pointer;
+    background-color: lightpink;
+    font-size: 1.125rem;
+    border-radius: .25rem;
+    padding: .25rem .5rem;
+    transition: 500ms all;
+}
+
+.doces__categoria:hover {
+    color: white;
+}
+
+.doces__categoria:active {
+    opacity: 0.8;
+    font-size: 1.25rem;
+}
+
 .doces__lista {
     display: flex;
     flex-direction: row;
@@ -57,6 +84,12 @@
     align-items: center;
 }
 
+.card-doce--erro {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: crimson;
+}
+
 .card-doce__nome {
     font-size: 2rem;
     font-weight: 500;
@@ -74,6 +107,7 @@
     font-size: 1.25rem;
     font-weight: 300;
     grid-area: doce-descricao;
+    overflow: hidden;
 }
 
 .card-doce__preco {

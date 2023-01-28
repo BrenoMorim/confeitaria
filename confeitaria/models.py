@@ -1,19 +1,20 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
+CATEGORIAS = [
+    ("BRIGADEIRO", "Brigadeiro"),
+    ("BOLO", "Bolo"),
+    ("PUDIM", "Pudim"),
+    ("MOUSSE", "Mousse"),
+    ("PAVÊ", "Pavê"),
+    ("SORVETE", "Sorvete"),
+    ("AÇAÍ", "Açaí"),
+    ("BEIJINHO", "Beijinho"),
+    ("BROWNIE", "Brownie"),
+    ("OUTROS", "Outros")
+]
+
 class Doce(models.Model):
-    CATEGORIAS = [
-        ("BRIGADEIRO", "Brigadeiro"),
-        ("BOLO", "Bolo"),
-        ("PUDIM", "Pudim"),
-        ("MOUSSE", "Mousse"),
-        ("PAVÊ", "Pavê"),
-        ("SORVETE", "Sorvete"),
-        ("AÇAÍ", "Açaí"),
-        ("BEIJINHO", "Beijinho"),
-        ("BROWNIE", "Brownie"),
-        ("OUTROS", "Outros")
-    ]
 
     nome = models.CharField(max_length=50, null=False, blank=False)
     descricao = models.TextField(max_length=255, null=False, blank=False)
