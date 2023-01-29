@@ -1,0 +1,9 @@
+<ul class="doces__lista">
+    {% if doces %}
+        {% for doce in doces %}
+            {% include 'partials/_card.html' with doce=doce %}
+        {% endfor %}
+    {% else %}
+        <li class="card-doce--erro">Nenhum doce encontrado =(</li>
+    {% endif %}
+</ul>

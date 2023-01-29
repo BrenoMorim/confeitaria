@@ -6,25 +6,6 @@
                 <a href="?categoria={{categoria}}" class="doces__categoria">{{categoria}}</a>
             {% endfor %}
         </div>
-        <ul class="doces__lista">
-            {% if doces %}
-                {% for doce in doces %}
-                    <li class="card-doce">
-                        <h3 class="card-doce__nome">{{doce.nome}}</h3>
-                        <h4 class="card-doce__categoria">{{doce.categoria}}</h4>
-                        <p class="card-doce__descricao">{{doce.descricao}}</p>
-                        <h4 class="card-doce__preco">R${{doce.preco}}</h4>
-                        {% if doce.foto %}
-                            <img src="{{doce.foto.url}}" class="card-doce__imagem" aria-hidden="true">
-                        {% else %}
-                            <img src="{% static '/assets/not_found.svg' %}" aria-hidden="true" class="card-doce__imagem">
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            
-            {% else %}
-                <li class="card-doce--erro">Nenhum doce encontrado =(</li>
-            {% endif %}
-        </ul>
+        {% include 'partials/_doces-lista.html' with doces=doces %}
     </section>
 {% endblock %}
