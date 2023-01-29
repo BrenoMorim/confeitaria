@@ -1,5 +1,5 @@
 {% load static %}
-<li class="card-doce">
+<article class="card-doce">
     <h3 class="card-doce__nome">{{doce.nome}}</h3>
     <h4 class="card-doce__categoria">{{doce.categoria}}</h4>
     <p class="card-doce__descricao">{{doce.descricao}}</p>
@@ -9,4 +9,4 @@
     {% else %}
         <img src="{% static '/assets/not_found.svg' %}" aria-hidden="true" class="card-doce__imagem">
     {% endif %}
-</li>
+</article>
