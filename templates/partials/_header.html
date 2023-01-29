@@ -1,9 +1,12 @@
 {% load static %}
 <header class="cabecalho">
-    <h1 class="cabecalho__titulo">Confeitaria</h1>
+    <a href="{% url 'index' %}">
+        <img class="cabecalho__logo" src="{% static '/assets/Logo.png' %}"/>
+    </a>
     <form action="" method="post" class="cabecalho__busca">
         {% csrf_token %}
         <input type="text" class="cabecalho__input" placeholder="Busca: ">
         <button class="cabecalho__botao" type="submit"><img src="{% static '/assets/search.svg' %}" alt="Buscar"></button>
     </form>
+    <a href="" class="cabecalho__icone"><img src="{% static '/assets/cart.svg' %}" alt="Carrinho"></a>
 </header>

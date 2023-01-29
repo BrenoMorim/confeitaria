@@ -1,5 +1,6 @@
 @import url('./reset.css');
 @import url('./doces.css');
+@import url('./cabecalho.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;300;400;700&display=swap');
 
 body {
@@ -7,4 +8,12 @@ body {
     max-width: 100vw;
     font-family: 'Sofia Sans', sans-serif;
     background-color: #FFFFFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3vh 5vw;
+    row-gap: 2rem;
 }

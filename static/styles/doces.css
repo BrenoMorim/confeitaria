@@ -1,24 +1,3 @@
-.cabecalho {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 2rem;
-}
-
-.cabecalho__titulo {
-    text-align: left;
-    font-size: 3.25rem;
-    font-weight: 700;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 3vh 5vw;
-    row-gap: 2rem;
-}
-
 .doces {
     display: flex;
     flex-direction: column;
