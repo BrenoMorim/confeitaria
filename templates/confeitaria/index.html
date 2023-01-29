@@ -8,4 +8,8 @@
         </div>
         {% include 'partials/_doces-lista.html' with doces=doces %}
     </section>
+    <section class="doces">
+        <h2 class="doces__titulo">Ótimas opções por menos de R$20,00</h2>
+        {% include 'partials/_doces-lista.html' with doces=doces_baratos %}
+    </section>
 {% endblock %}
