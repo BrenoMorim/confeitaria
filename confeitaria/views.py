@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from confeitaria.models import Doce, CATEGORIAS
 
-# Create your views here.
-
 def index(request):
 
     if not "categoria" in request.GET or request.GET['categoria'] == 'TODOS':
