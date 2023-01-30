@@ -36,5 +36,5 @@ new Swiper('.swiper', {
 });
 </script>
 {% else %}
-    <h3 class="card-doce--erro">Nenhum doce encontrado =(</h3>
+    {% include 'partials/_sem-doces.html' %}
 {% endif %}

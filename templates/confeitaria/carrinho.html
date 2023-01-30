@@ -1,37 +1,13 @@
 {% extends 'base.html' %}{% load static %} {% block content %}
-    <section class="doces">
-        <h2 class="doces__titulo">Carrinho</h2>
+    <section class="carrinho">
+        <h2 class="carrinho__titulo">Carrinho</h2>
         {% if itens %}
             {% for item in itens %}
-                <article class="carrinho__item">
-                    {% if item.foto %}
-                        <img class="carrinho__item__imagem" src="{{item.foto.url}}">
-                    {% else %}
-                        <img class="carrinho__item__imagem" src="{% static '/assets/not_found.svg' %}">
-                    {% endif %}
-                    <h3 class="carrinho__item__nome">{{item.nome}}</h3>
-                    <h4 class="carrinho__item__preco">R${{item.preco}}</h4>
-                    <form class="carrinho__item__form" action="{% url 'carrinho' %}" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="doce_id" style="display: none;" value="{{item.id}}">
-                        <input type="text" style="display: none;" name="tipo" value="adicionar">
-                        <button type="submit" class="carrinho__botao">
-                            <img class="carrinho__icone" src="{% static '/assets/add_to_cart.svg' %}" alt="Adicionar mais um ao carrinho"/>
-                        </button>
-                    </form>
-                    <form class="carrinho__item__form" action="{% url 'carrinho' %}" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="doce_id" style="display: none;" value="{{item.id}}">
-                        <input type="text" style="display: none;" name="tipo" value="remover">
-                        <button type="submit" class="carrinho__botao">
-                            <img class="carrinho__icone" src="{% static '/assets/remove_from_cart.svg' %}" alt="Remover do carrinho"/>
-                        </button>
-                    </form>
-                </article>
+                {% include 'partials/_item-carrinho.html' with item=item %}
             {% endfor %}
             <h3 class="carrinho__valor">Valor Total: R${{valor_total}}</h3>
         {% else %}
-            <h3 class="carrinho__vazio">Nenhum item no carrinho =(</h3>
+            {% include 'partials/_sem-doces.html' %}
         {% endif %}
 
         <div class="carrinho__links">

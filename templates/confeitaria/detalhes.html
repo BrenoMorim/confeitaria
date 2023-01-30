@@ -22,6 +22,6 @@
             {% include 'partials/_doces-carousel.html' with doces=doces_relacionados %}
         </section>
     {% else %}
-        <h3 class="card-doce--erro">Doce não encontrado =(</h3>
+        {% include 'partials/_sem-doces.html' %}
     {% endif %}
 {% endblock %}

@@ -10,6 +10,18 @@
     flex-wrap: wrap;
 }
 
+.carrinho {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-self: center;
+}
+
+.carrinho__titulo {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
 .carrinho__item__imagem {
     max-height: 200px;
     border-radius: .5rem;
@@ -70,7 +82,7 @@
     color: #FFFFFF;
 }
 
-.carrinho__vazio {
-    font-size: 2rem;
-    color: crimson;
+.carrinho__item__botoes {
+    display: flex;
+    gap: 1rem;
 }
