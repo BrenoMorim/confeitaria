@@ -8,6 +8,7 @@
 :root {
     --branco: #FFFFFF;
     --rosa: #FFB6C1;
+    --sombra: 2px 2px 6px #AAAAAA;
 }
 
 body {
@@ -34,4 +35,5 @@ body {
     border-radius: .5rem;
     border: 2px solid var(--rosa);
     align-self: center;
+    box-shadow: var(--sombra);
 }

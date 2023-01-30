@@ -71,6 +71,7 @@
     gap: .5rem;
     align-items: center;
     width: fit-content;
+    box-shadow: var(--sombra);
 }
 
 .detalhes__botao--icone {

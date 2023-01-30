@@ -8,6 +8,7 @@
     background-color: var(--rosa);
     border-radius: 1rem;
     flex-wrap: wrap;
+    box-shadow: var(--sombra);
 }
 
 .carrinho {
@@ -47,6 +48,7 @@
     align-items: center;
     justify-content: center;
     transition: 500ms all;
+    box-shadow: var(--sombra);
 }
 
 .carrinho__botao:hover {
@@ -76,6 +78,7 @@
     padding: .5rem 1rem;
     font-size: 1.5rem;
     transition: all 500ms;
+    box-shadow: var(--sombra);
 }
 
 .carrinho__link:hover {
