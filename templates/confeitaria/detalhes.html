@@ -5,7 +5,12 @@
             <h3 class="detalhes__categoria">{{doce.categoria}}</h3>
             <h4 class="detalhes__preco">R${{doce.preco}}</h4>
             <p class="detalhes__descricao">{{doce.descricao}}</p>
-            <a class="detalhes__botao">Adicionar ao carrinho <img class="detalhes__botao--icone" src="{% static '/assets/add_to_cart.svg' %}" aria-hidden="true"></a>
+            <form action="{% url 'carrinho' %}" class="detalhes__form" method="post">
+                {% csrf_token %}
+                <input name="doce_id" style="display: none;" value="{{doce.id}}"/>
+                <input type="text" style="display: none;" name="tipo" value="adicionar">
+                <button id="adicionar_carrinho" class="detalhes__botao">Adicionar ao carrinho <img class="detalhes__botao--icone" src="{% static '/assets/add_to_cart.svg' %}" aria-hidden="true"></button>
+            </form>
             {% if doce.foto %}
                 <img class="detalhes__imagem" src="{{doce.foto.url}}" aria-hidden="true">
             {% else %}

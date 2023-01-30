@@ -8,5 +8,5 @@
         <input type="text" name="busca" required class="cabecalho__input" placeholder="Busca: ">
         <button class="cabecalho__botao" type="submit"><img src="{% static '/assets/search.svg' %}" alt="Buscar"></button>
     </form>
-    <a href="" class="cabecalho__icone"><img src="{% static '/assets/cart.svg' %}" alt="Carrinho"></a>
+    <a href="{% url 'carrinho' %}" class="cabecalho__icone"><img src="{% static '/assets/cart.svg' %}" alt="Carrinho"></a>
 </header>

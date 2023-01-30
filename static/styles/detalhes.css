@@ -6,7 +6,7 @@
         "detalhes-titulo detalhes-titulo detalhes-titulo"
         "detalhes-imagem detalhes-preco detalhes-categoria"
         "detalhes-imagem detalhes-descricao detalhes-descricao"
-        "detalhes-imagem detalhes-botao detalhes-botao"
+        "detalhes-imagem detalhes-form detalhes-form"
     ;
     gap: 2rem;
     align-items: center;
@@ -22,9 +22,10 @@
             "detalhes-preco detalhes-categoria"
             "detalhes-descricao detalhes-descricao"
             "detalhes-imagem detalhes-imagem"
-            "detalhes-botao detalhes-botao"
+            "detalhes-form detalhes-form"
         ;
-        gap: .5rem;
+        column-gap: .5rem;
+        row-gap: 1rem;
         justify-content: center;
     }
 }
@@ -54,8 +55,11 @@
     font-size: 1.5rem;
 }
 
+.detalhes__form {
+    grid-area: detalhes-form;
+}
+
 .detalhes__botao {
-    grid-area: detalhes-botao;
     background-color: lightpink;
     padding: .5rem 1rem;
     font-size: 1.75rem;
@@ -90,5 +94,8 @@
     .detalhes__imagem {
         max-height: 50vh;
         max-width: 90vw;
+    }
+    .detalhes__form {
+        justify-self: center;
     }
 }

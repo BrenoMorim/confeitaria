@@ -36,3 +36,28 @@ def detalhes_doce(request, doce_id):
             "doces_relacionados": [d for d in doces_relacionados if d.id != doce_id]
         }
     )
+
+def carrinho(request):
+    if request.method == 'POST':
+
+        if request.POST['tipo'] == 'adicionar':
+            if not 'Carrinho' in request.session.keys():
+                request.session['Carrinho'] = [request.POST['doce_id']]
+            else:
+                request.session['Carrinho'] += [request.POST['doce_id']]
+        elif request.POST['tipo'] == 'remover':
+            itens = request.session['Carrinho']
+            itens.remove(request.POST['doce_id'])
+            request.session['Carrinho'] = itens
+
+        return redirect('carrinho')
+
+    if request.method == 'GET':
+        itens = request.session.get('Carrinho', "")
+        if itens != [""]:
+            itens = [get_object_or_404(Doce, pk=item) for item in itens]
+            valor_total = sum([item.preco for item in itens])
+        else:
+            itens = None
+            valor_total = 0
+        return render(request, 'confeitaria/carrinho.html', {"itens": itens, "valor_total": valor_total})
