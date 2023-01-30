@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+    {% if doce %}
+        <section class="detalhes">
+            <h2 class="detalhes__titulo">{{doce.nome}}</h2>
+            <h3 class="detalhes__categoria">{{doce.categoria}}</h3>
+            <h4 class="detalhes__preco">R${{doce.preco}}</h4>
+            <p class="detalhes__descricao">{{doce.descricao}}</p>
+            <a class="detalhes__botao">Adicionar ao carrinho <img class="detalhes__botao--icone" src="{% static '/assets/add_to_cart.svg' %}" aria-hidden="true"></a>
+            {% if doce.foto %}
+                <img class="detalhes__imagem" src="{{doce.foto.url}}" aria-hidden="true">
+            {% else %}
+                <img class="detalhes__imagem" src="{% static '/assets/not_found.svg' %}" aria-hidden="true">
+            {% endif %}
+        </section>
+        <section class="doces">
+            <h2 class="doces__titulo">Produtos relacionados</h2>
+            {% include 'partials/_doces-carousel.html' with doces=doces_relacionados %}
+        </section>
+    {% else %}
+        <h3 class="card-doce--erro">Doce não encontrado =(</h3>
+    {% endif %}
+{% endblock %}

@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from confeitaria.models import Doce, CATEGORIAS
+from django.shortcuts import get_object_or_404
 
 def index(request):
 
-    doces_baratos = Doce.objects.filter(preco__lt=20.0)[:15]
-
+    doces_baratos = Doce.objects.filter(preco__lt=20.0)[:10]
+    print(doces_baratos[0].id)
     if not "categoria" in request.GET or request.GET['categoria'] == 'TODOS':
-        doces = Doce.objects.all()[:15]
+        doces = Doce.objects.all()[:10]
     else:
-        doces = Doce.objects.filter(categoria=request.GET['categoria'])[:15]
+        doces = Doce.objects.filter(categoria=request.GET['categoria'])[:10]
 
     categorias = ["TODOS"] + [categoria[0] for categoria in CATEGORIAS]
     return render(request, "confeitaria/index.html", {
@@ -22,5 +23,16 @@ def busca(request):
         return redirect('index')
     
     query = request.POST['busca']
-    doces = Doce.objects.filter(nome__contains=query)
+    doces = Doce.objects.filter(nome__icontains=query)
     return render(request, 'confeitaria/busca.html', {"doces": doces, "busca": query})
+
+def detalhes_doce(request, doce_id):
+    
+    doce = get_object_or_404(Doce, pk=doce_id)
+    doces_relacionados = Doce.objects.filter(categoria=doce.categoria)[:10]
+    return render(request, 'confeitaria/detalhes.html', 
+        {
+            "doce": doce,
+            "doces_relacionados": [d for d in doces_relacionados if d.id != doce_id]
+        }
+    )

@@ -54,11 +54,11 @@
     display: grid;
     row-gap: .5rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr auto 3fr;
+    grid-template-rows: 1fr 1fr auto 1fr;
     grid-template-areas: "doce-nome doce-nome"
         "doce-categoria doce-preco"
-        "doce-descricao doce-descricao"
         "doce-imagem doce-imagem"
+        "doce-detalhes doce-detalhes"
     ;
     align-items: center;
 }
@@ -80,6 +80,7 @@
     font-size: 2rem;
     font-weight: 500;
     grid-area: doce-nome;
+    align-self: flex-start;
 }
 
 .card-doce__categoria {
@@ -89,11 +90,19 @@
     text-transform: capitalize;
 }
 
-.card-doce__descricao {
+.card-doce__detalhes {
     font-size: 1.25rem;
-    font-weight: 300;
-    grid-area: doce-descricao;
-    overflow: hidden;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    background-color: #FFFFFF;
+    grid-area: doce-detalhes;
+    align-self: flex-end;
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.card-doce__detalhes:hover {
+    color: lightpink;
 }
 
 .card-doce__preco {
