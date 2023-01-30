@@ -5,11 +5,16 @@
 @import url('./carrinho.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;300;400;700&display=swap');
 
+:root {
+    --branco: #FFFFFF;
+    --rosa: #FFB6C1;
+}
+
 body {
     min-height: 100vh;
     max-width: 100vw;
     font-family: 'Sofia Sans', sans-serif;
-    background-color: #FFFFFF;
+    background-color: var(--branco);
 }
 
 .container {
@@ -18,4 +23,15 @@ body {
     align-items: flex-start;
     padding: 3vh 5vw;
     row-gap: 2rem;
+}
+
+.alerta {
+    color: var(--rosa);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 2px solid var(--rosa);
+    align-self: center;
 }

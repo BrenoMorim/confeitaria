@@ -5,7 +5,7 @@
     gap: 2rem;
     flex-wrap: wrap;
     padding: 2rem;
-    background-color: lightpink;
+    background-color: var(--rosa);
 }
 
 .cabecalho__titulo {
@@ -15,7 +15,7 @@
 }
 
 .cabecalho__busca {
-    background-color: #FFFFFF;
+    background-color: var(--branco);
     border-radius: 1rem;
     padding: .5rem 1rem;
     display: flex;
@@ -38,7 +38,7 @@
 }
 
 .cabecalho__icone {
-    background-color: #FFFFFF;
+    background-color: var(--branco);
     border-radius: 50%;
     padding: .5rem;
     width: 3rem;
@@ -47,5 +47,5 @@
 }
 
 .cabecalho__icone:hover {
-    background-color: lightpink;
+    background-color: var(--rosa);
 }

@@ -60,7 +60,7 @@
 }
 
 .detalhes__botao {
-    background-color: lightpink;
+    background-color: var(--rosa);
     padding: .5rem 1rem;
     font-size: 1.75rem;
     text-align: center;
@@ -79,7 +79,7 @@
 }
 
 .detalhes__botao:hover {
-    color: #FFFFFF;
+    color: var(--branco);
 }
 
 .detalhes__imagem {

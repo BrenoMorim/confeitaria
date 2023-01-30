@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from confeitaria.models import Doce, CATEGORIAS
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 def index(request):
 
     doces_baratos = Doce.objects.filter(preco__lt=20.0)[:10]
-    print(doces_baratos[0].id)
     if not "categoria" in request.GET or request.GET['categoria'] == 'TODOS':
         doces = Doce.objects.all()[:10]
     else:
@@ -45,9 +45,12 @@ def carrinho(request):
                 request.session['Carrinho'] = [request.POST['doce_id']]
             else:
                 request.session['Carrinho'] += [request.POST['doce_id']]
+            messages.info(request, "Doce adicionado ao carrinho com sucesso!")
+
         elif request.POST['tipo'] == 'remover':
             itens = request.session['Carrinho']
             itens.remove(request.POST['doce_id'])
+            messages.info(request, "Doce removido do carrinho com sucesso!")
             request.session['Carrinho'] = itens
 
         return redirect('carrinho')
