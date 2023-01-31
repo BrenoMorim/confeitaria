@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from confeitaria.models import Doce, CATEGORIAS
+from confeitaria.models import Doce, Pedido, CATEGORIAS
+from confeitaria.forms import PedidoForms
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
@@ -64,3 +65,42 @@ def carrinho(request):
             itens = None
             valor_total = 0
         return render(request, 'confeitaria/carrinho.html', {"itens": itens, "valor_total": valor_total})
+
+def finalizar_pedido(request):
+
+    itens = request.session.get('Carrinho', "")
+    if itens == [""] or not itens:
+        messages.error(request, 'Seu carrinho está vazio!')
+        return redirect('carrinho')
+
+    itens = [get_object_or_404(Doce, pk=item) for item in itens]
+    itens = [{"id": item.id, "nome": item.nome, "preco": item.preco} for item in itens]
+    
+    valor_total = sum([item['preco'] for item in itens])
+    
+    forms = PedidoForms()
+    
+    if request.method == 'POST':
+        forms = PedidoForms(request.POST)
+        
+        if forms.is_valid():
+            nome = forms['nome'].value()
+            contato = forms['contato'].value()
+            cep = forms['cep'].value()
+            numero_endereco = forms['numero_endereco'].value()
+
+            pedido = Pedido.objects.create(
+                nome_comprador=nome,
+                contato_comprador=contato,
+                valor_total=valor_total,
+                cep_entrega=cep,
+                numero_endereco=numero_endereco,
+                itens = {"itens": itens}
+            )
+
+            pedido.save()
+            request.session['Carrinho'] = []
+            messages.success(request, 'Pedido finalizado com sucesso! Entraremos em contato em breve para mais detalhes')
+            return redirect('index')
+
+    return render(request, "confeitaria/finalizar-pedido.html", {"form": forms, "valor_total": valor_total})

@@ -12,7 +12,7 @@
 
         <div class="carrinho__links">
             {% if itens %}
-                <a class="carrinho__link" href="">Finalizar pedido</a>
+                <a class="carrinho__link" href="{% url 'finalizar' %}">Finalizar pedido</a>
             {% endif %}
             <a class="carrinho__link" href="{% url 'index' %}">
                 {% if itens %}

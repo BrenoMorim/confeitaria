@@ -3,11 +3,14 @@
 @import url('./cabecalho.css');
 @import url('./detalhes.css');
 @import url('./carrinho.css');
+@import url('./finalizar.css');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;300;400;700&display=swap');
 
 :root {
     --branco: #FFFFFF;
     --rosa: #FFB6C1;
+    --cinza: #6A6A6A;
+    --preto: #222222;
     --sombra: 2px 2px 6px #AAAAAA;
 }
 
