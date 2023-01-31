@@ -2,7 +2,14 @@
 
 > Status: Concluído
 
-Uma confeitaria online desenvolvida em **Django** com SQLite3.
+Uma confeitaria online desenvolvida com **Python** em **Django**.
+
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome | **Confeitaria do Breno**
+| :label: Tecnologias | Python, Django, HTML, CSS
+
+![Imagem de capa do projeto](https://github.com/BrenoMorim/confeitaria/blob/main/imagens/index.png?raw=true#vitrinedev)
 
 ## Detalhes do projeto
 
@@ -18,11 +25,15 @@ Onde alguns produtos em destaque são exibidos na forma de carrossel, usando Swi
 
 ![Screenshot da página inicial](./imagens/index.png)
 
+---
+
 ### Busca
 
 Página que mostra os resultados da busca que pode ser feita usando o campo que fica no header da aplicação.
 
 ![Screenshot da página de busca](./imagens/busca.png)
+
+---
 
 ### Detalhes
 
@@ -30,11 +41,15 @@ Mostra os detalhes de um produto específico, que pode ser acessado por um botã
 
 ![Screenshot da página de detalhes de um produto](./imagens/detalhes.png)
 
+---
+
 ### Carrinho
 
 Contém uma lista com todos os produtos que já foram adicionados no carrinho, sendo possível remover ou adicionar mais itens.
 
 ![Screenshot do carrinho](./imagens/carrinho.png)
+
+---
 
 ### Finalizar Pedido
 
@@ -42,10 +57,10 @@ Página com formulário das informações do cliente, como telefone de contato, 
 
 ![Screenshot com o formulário de finalização de pedido](./imagens/finalizar.png)
 
+---
+
 ### Erro
 
 Página para erros 500 e 404, que é renderizada somente em ambiente de produção, quando a opção DEBUG de settings.py está como False.
 
 ![Screenshot da página de erro](./imagens/erro.png)
-
----

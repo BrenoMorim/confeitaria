@@ -1,6 +1,7 @@
 from django import forms
 import requests
 import re
+from django.utils import timezone
 
 
 class PedidoForms(forms.Form):
@@ -28,6 +29,12 @@ class PedidoForms(forms.Form):
             "placeholder": "Exemplo: 9"
         }
     ))
+    data_entrega=forms.DateField(
+        input_formats=["%d/%m/%Y"],
+        required=True,
+        label="Data para realizarmos a entrega",
+        widget=forms.DateInput(attrs={"class": "form__data-entrega", "placeholder": "Exemplo: 20/02/2023"},format=["%d/%m/%Y"])
+    )
 
     def clean_cep(self):
         cep = self.cleaned_data.get("cep")
@@ -55,4 +62,16 @@ class PedidoForms(forms.Form):
             raise forms.ValidationError('Número de contato inválido! Lembre-se de usar o padrão 11 91234-5678')
 
         return contato
+
+    def clean_data_entrega(self):
+        data_entrega = self.cleaned_data.get("data_entrega")
+        if not data_entrega:
+            raise forms.ValidationError("Data de entrega não enviada")
+        
+        data_atual = timezone.datetime.now().date()
+
+        if data_entrega > data_atual:
+            return data_entrega
+        else:
+            raise forms.ValidationError("A data de entrega deve ser no minínimo um dia depois de hoje")
         

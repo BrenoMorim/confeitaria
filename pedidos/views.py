@@ -30,6 +30,11 @@ def finalizar_pedido(request):
             contato = forms['contato'].value()
             cep = forms['cep'].value()
             numero_endereco = forms['numero_endereco'].value()
+            data_entrega = forms['data_entrega'].value()
+
+            # Adaptando a data para o formato aceito pelo banco de dados
+            dia, mes, ano = data_entrega.split('/')
+            data_entrega = f"{ano}-{mes}-{dia}"
 
             pedido = Pedido.objects.create(
                 nome_comprador=nome,
@@ -37,7 +42,8 @@ def finalizar_pedido(request):
                 valor_total=valor_total,
                 cep_entrega=cep,
                 numero_endereco=numero_endereco,
-                itens = {"itens": itens}
+                itens={"itens": itens},
+                data_entrega=data_entrega
             )
 
             pedido.save()

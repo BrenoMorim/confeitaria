@@ -12,3 +12,4 @@ class Pedido(models.Model):
     itens = models.JSONField(null=False)
     entregue = models.BooleanField(default=False)
     data_pedido = models.DateField(default=timezone.now)
+    data_entrega = models.DateField(blank=False, null=False)

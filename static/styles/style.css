@@ -30,7 +30,7 @@ body {
 }
 
 .alerta {
-    color: var(--rosa);
+    color: var(--preto);
     font-weight: 700;
     font-size: 1.25rem;
     text-align: center;
