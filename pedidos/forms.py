@@ -2,6 +2,7 @@ from django import forms
 import requests
 import re
 
+
 class PedidoForms(forms.Form):
     nome=forms.CharField(max_length=60, required=True, label="Nome", widget=forms.TextInput(
         attrs={
@@ -33,9 +34,11 @@ class PedidoForms(forms.Form):
         if not cep:
             raise forms.ValidationError("CEP não enviado!")
         cep = cep.strip().replace("-", "")
+
+        # Usa o web service viacep para pegar os dados do endereço
         resposta = requests.get(f"https://viacep.com.br/ws/{cep}/json/")
         
-        print(resposta.json())
+        # A resposta quando encontra um endereço válido retorna um json contendo também o cep já formatado
         if not "cep" in resposta.text:
             raise forms.ValidationError("CEP inválido!")
 
@@ -43,9 +46,13 @@ class PedidoForms(forms.Form):
 
     def clean_contato(self):
         contato = self.cleaned_data.get("contato")
-        regex = "([0-9]{2})?( )?9[0-9]{4}(-)?[0-9]{4}"
+
+        # Garante que o telefone de contato siga o padrão:
+        # 11 91234-5678, podendo ou não conter o espaço separando o DDD ou o hífen no número
+        regex = "([0-9]{2})( )?9[0-9]{4}(-)?[0-9]{4}"
 
         if not re.match(regex, contato):
             raise forms.ValidationError('Número de contato inválido! Lembre-se de usar o padrão 11 91234-5678')
 
         return contato
+        

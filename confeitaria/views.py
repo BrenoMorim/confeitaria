@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from confeitaria.models import Doce, Pedido, CATEGORIAS
-from confeitaria.forms import PedidoForms
+from confeitaria.models import Doce, CATEGORIAS
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
@@ -40,7 +39,8 @@ def detalhes_doce(request, doce_id):
 
 def carrinho(request):
     if request.method == 'POST':
-
+        
+        # Adiciona item no carrinho através das sessões do Django
         if request.POST['tipo'] == 'adicionar':
             if not 'Carrinho' in request.session.keys():
                 request.session['Carrinho'] = [request.POST['doce_id']]
@@ -48,17 +48,21 @@ def carrinho(request):
                 request.session['Carrinho'] += [request.POST['doce_id']]
             messages.info(request, "Doce adicionado ao carrinho com sucesso!")
 
+        # Remove o item da lista do carrinho
         elif request.POST['tipo'] == 'remover':
             itens = request.session['Carrinho']
             itens.remove(request.POST['doce_id'])
-            messages.info(request, "Doce removido do carrinho com sucesso!")
             request.session['Carrinho'] = itens
+            messages.info(request, "Doce removido do carrinho com sucesso!")
 
         return redirect('carrinho')
 
     if request.method == 'GET':
+
+        # A sessão armazena somente os ids dos produtos
         itens = request.session.get('Carrinho', "")
         if itens != [""]:
+            # Então é preciso buscar o resto dos dados no banco de dados
             itens = [get_object_or_404(Doce, pk=item) for item in itens]
             valor_total = sum([item.preco for item in itens])
         else:
@@ -66,41 +70,8 @@ def carrinho(request):
             valor_total = 0
         return render(request, 'confeitaria/carrinho.html', {"itens": itens, "valor_total": valor_total})
 
-def finalizar_pedido(request):
+def erro404(request, exception):
+    return render(request, 'erro.html', {"mensagem": "Ops! A página que você buscou não foi encontrada =("}, status=404)
 
-    itens = request.session.get('Carrinho', "")
-    if itens == [""] or not itens:
-        messages.error(request, 'Seu carrinho está vazio!')
-        return redirect('carrinho')
-
-    itens = [get_object_or_404(Doce, pk=item) for item in itens]
-    itens = [{"id": item.id, "nome": item.nome, "preco": item.preco} for item in itens]
-    
-    valor_total = sum([item['preco'] for item in itens])
-    
-    forms = PedidoForms()
-    
-    if request.method == 'POST':
-        forms = PedidoForms(request.POST)
-        
-        if forms.is_valid():
-            nome = forms['nome'].value()
-            contato = forms['contato'].value()
-            cep = forms['cep'].value()
-            numero_endereco = forms['numero_endereco'].value()
-
-            pedido = Pedido.objects.create(
-                nome_comprador=nome,
-                contato_comprador=contato,
-                valor_total=valor_total,
-                cep_entrega=cep,
-                numero_endereco=numero_endereco,
-                itens = {"itens": itens}
-            )
-
-            pedido.save()
-            request.session['Carrinho'] = []
-            messages.success(request, 'Pedido finalizado com sucesso! Entraremos em contato em breve para mais detalhes')
-            return redirect('index')
-
-    return render(request, "confeitaria/finalizar-pedido.html", {"form": forms, "valor_total": valor_total})
+def erro500(request):
+    return render(request, 'erro.html', {"mensagem": "Ops! Aconteceu um erro inesperado no nosso servidor =("}, status=500)

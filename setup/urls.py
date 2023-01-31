@@ -18,7 +18,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('', include('confeitaria.urls'))
+    path("21232f297a57a5a743894a0e4a801fc3/", admin.site.urls),
+    path('', include('confeitaria.urls')),
+    path('', include('pedidos.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = "confeitaria.views.erro404"
+handler500 = "confeitaria.views.erro500"

@@ -48,7 +48,6 @@
     align-items: center;
     justify-content: center;
     transition: 500ms all;
-    box-shadow: var(--sombra);
 }
 
 .carrinho__botao:hover {
