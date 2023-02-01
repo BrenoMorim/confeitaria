@@ -35,6 +35,12 @@ class PedidoForms(forms.Form):
         label="Data para realizarmos a entrega",
         widget=forms.DateInput(attrs={"class": "form__data-entrega", "placeholder": "Exemplo: 20/02/2023"},format=["%d/%m/%Y"])
     )
+    mensagem=forms.CharField(required=False, max_length=255, label="Deixe uma mensagem para nossa equipe (Opcional)", widget=forms.Textarea(
+        attrs={
+            "class": "form__mensagem",
+            "placeholder": "Pode ser uma recomendação ou detalhe sobre o pedido, por exemplo"
+        }
+    ))
 
     def clean_cep(self):
         cep = self.cleaned_data.get("cep")

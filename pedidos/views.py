@@ -31,6 +31,7 @@ def finalizar_pedido(request):
             cep = forms['cep'].value()
             numero_endereco = forms['numero_endereco'].value()
             data_entrega = forms['data_entrega'].value()
+            mensagem = forms['mensagem'].value()
 
             # Adaptando a data para o formato aceito pelo banco de dados
             dia, mes, ano = data_entrega.split('/')
@@ -43,7 +44,8 @@ def finalizar_pedido(request):
                 cep_entrega=cep,
                 numero_endereco=numero_endereco,
                 itens={"itens": itens},
-                data_entrega=data_entrega
+                data_entrega=data_entrega,
+                mensagem=mensagem
             )
 
             pedido.save()

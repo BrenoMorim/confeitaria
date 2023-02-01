@@ -13,3 +13,4 @@ class Pedido(models.Model):
     entregue = models.BooleanField(default=False)
     data_pedido = models.DateField(default=timezone.now)
     data_entrega = models.DateField(blank=False, null=False)
+    mensagem = models.TextField(blank=True, null=True, max_length=255)

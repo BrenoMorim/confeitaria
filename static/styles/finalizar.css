@@ -24,13 +24,23 @@
     font-weight: 300;
 }
 
-.form__campo input {
+.form__campo input, .form__campo textarea {
     border: 2px solid var(--cinza);
     color: var(--preto);
     font-size: 1.25rem;
     padding: .5rem 1rem;
     border-radius: .5rem;
     min-width: 25vw;
+    max-width: 80vw;
+    height: fit-content;
+}
+
+.form__mensagem {
+    max-height: 15vh; 
+}
+
+.form__mensagem::placeholder {
+    color: var(--cinza);
 }
 
 .form__campo input::placeholder {
