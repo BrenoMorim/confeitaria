@@ -46,14 +46,14 @@ def carrinho(request):
                 request.session['Carrinho'] = [request.POST['doce_id']]
             else:
                 request.session['Carrinho'] += [request.POST['doce_id']]
-            messages.info(request, "Doce adicionado ao carrinho com sucesso!")
+            messages.success(request, "Doce adicionado ao carrinho com sucesso!")
 
         # Remove o item da lista do carrinho
         elif request.POST['tipo'] == 'remover':
             itens = request.session['Carrinho']
             itens.remove(request.POST['doce_id'])
             request.session['Carrinho'] = itens
-            messages.info(request, "Doce removido do carrinho com sucesso!")
+            messages.success(request, "Doce removido do carrinho com sucesso!")
 
         return redirect('carrinho')
 

@@ -37,6 +37,12 @@
     align-self: flex-end;
 }
 
+@media screen and (max-width: 1024px) {
+    .detalhes__titulo {
+        font-size: 2rem;
+    }
+}
+
 .detalhes__categoria {
     grid-area: detalhes-categoria;
     font-weight: 300;

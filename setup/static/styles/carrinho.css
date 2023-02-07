@@ -23,6 +23,12 @@
     font-weight: 700;
 }
 
+@media screen and (max-width: 1024px) {
+    .carrinho__titulo {
+        font-size: 2rem;
+    }
+}
+
 .carrinho__item__imagem {
     max-height: 200px;
     border-radius: .5rem;
@@ -31,6 +37,12 @@
 .carrinho__item__nome {
     font-size: 2.5rem;
     font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+    .carrinho__item__nome {
+        font-size: 1.75rem;
+    }
 }
 
 .carrinho__item__preco {

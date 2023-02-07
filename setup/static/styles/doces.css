@@ -11,6 +11,16 @@
     align-items: center;
     gap: 1rem;
     justify-content: flex-start;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1240px) {
+    .doces__categorias {
+        flex-wrap: nowrap;
+        overflow: scroll;
+        max-width: calc(100vw - 1.5rem);
+    }
 }
 
 .doces__categoria {
@@ -44,6 +54,12 @@
 .doces__titulo {
     font-size: 2.75rem;
     font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+    .doces__titulo {
+        font-size: 2rem;
+    }
 }
 
 .card-doce {
